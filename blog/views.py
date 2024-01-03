@@ -6,7 +6,12 @@ from django.shortcuts import redirect
 from blog.forms import CommentForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
-,
+
+def get_ip(request):
+  from django.http import HttpResponse
+  return HttpResponse(request.META['REMOTE_ADDR'])
+
+
 @cache_page(300)
 @vary_on_headers("Cookie")
 def index(request):

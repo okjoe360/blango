@@ -32,6 +32,7 @@ class Post(models.Model):
   content = models.TextField()
   tags = models.ManyToManyField(Tag, related_name="posts")
   comments = GenericRelation(Comment)
+  published_at = models.DateTimeField(blank=True, null=True, db_index=True)
 
   def __str__(self):
     return self.title
